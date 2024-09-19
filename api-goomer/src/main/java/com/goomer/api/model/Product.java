@@ -37,7 +37,7 @@ public class Product implements Serializable {
     private BigDecimal promotionalPrice;
     @Column(name = "promotional_days")
     private Set<String> promotionalDays;
-    @Column(name = "promotional_hours")
+    @Column(name = "promotion_hours")
     private String promotionHours;
     @Column(name = "is_on_promotion")
     private Boolean isOnPromotion;
