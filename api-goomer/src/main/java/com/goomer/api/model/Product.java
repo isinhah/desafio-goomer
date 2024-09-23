@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -24,19 +23,19 @@ public class Product implements Serializable {
     private UUID id;
     @Column(unique = true, nullable = false)
     private String name;
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url")
     private String imageUrl;
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
     @Column(nullable = false)
     private String category;
 
     @Column(name = "promotional_description")
     private String promotionalDescription;
-    @Column(name = "promotional_price")
+    @Column(name = "promotional_price", precision = 10, scale = 2)
     private BigDecimal promotionalPrice;
     @Column(name = "promotional_days")
-    private Set<String> promotionalDays;
+    private String promotionalDays;
     @Column(name = "promotion_hours")
     private String promotionHours;
     @Column(name = "is_on_promotion")

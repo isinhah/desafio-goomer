@@ -7,7 +7,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "TB_RESTAURANTS")
@@ -30,7 +29,8 @@ public class Restaurant implements Serializable {
     @Column(name = "opening_hours", nullable = false)
     private String openingHours;
 
-    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> products = new HashSet<>();
 
     public Restaurant(Long id, String name, String imageUrl, String description, String openingHours) {
@@ -39,6 +39,5 @@ public class Restaurant implements Serializable {
         this.imageUrl = imageUrl;
         this.description = description;
         this.openingHours = openingHours;
-        this.products = new HashSet<>();
     }
 }

@@ -33,15 +33,15 @@ public class RestaurantController {
 
     @GetMapping("/searchByNameOrDescription")
     @ResponseStatus(HttpStatus.OK)
-    public List<RestaurantDTO> getRestaurantByNameOrDescription(@RequestParam(required = false) String name,
-                                                              @RequestParam(required = false) String description,
-                                                              Pageable pageable) {
+    public List<RestaurantDTO> findRestaurantsByNameOrDescription(@RequestParam(required = false) String name,
+                                                                  @RequestParam(required = false) String description,
+                                                                  Pageable pageable) {
         return restaurantService.getRestaurantByNameOrDescription(name, description, pageable).getContent();
     }
 
     @GetMapping("/searchByImageOrHours")
     @ResponseStatus(HttpStatus.OK)
-    public List<RestaurantDTO> findByRestaurantByImageOrOpeningHours(@RequestParam(required = false) String imageUrl,
+    public List<RestaurantDTO> findRestaurantsByImageOrOpeningHours(@RequestParam(required = false) String imageUrl,
                                                                      @RequestParam(required = false) String openingHours,
                                                                      Pageable pageable) {
         return restaurantService.getRestaurantByImageUrlOrOpeningHours(imageUrl, openingHours, pageable).getContent();

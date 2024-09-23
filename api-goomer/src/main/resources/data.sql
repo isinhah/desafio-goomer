@@ -11,13 +11,13 @@ CREATE TABLE tb_restaurants (
 CREATE TABLE tb_products (
     id VARCHAR(36) NOT NULL,
     name VARCHAR(255) UNIQUE NOT NULL,
-    image_url VARCHAR(255) NOT NULL,
+    image_url VARCHAR(255),
     price DECIMAL(10, 2) NOT NULL,
     category VARCHAR(255) NOT NULL,
     promotional_description TEXT,
     promotional_price DECIMAL(10, 2),
-    promotional_days TEXT,
-    promotional_hours VARCHAR(255),
+    promotional_days VARCHAR(255),
+    promotion_hours VARCHAR(255),
     is_on_promotion BOOLEAN,
     restaurant_id BIGINT NOT NULL,
     FOREIGN KEY (restaurant_id) REFERENCES tb_restaurants(id) ON DELETE CASCADE
