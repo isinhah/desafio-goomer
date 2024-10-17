@@ -24,7 +24,7 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> listAllProducts(@RequestParam(required = false) String name,
+    public List<ProductDTO> getAllProducts(@RequestParam(required = false) String name,
                                             @RequestParam(required = false) String category,
                                             @RequestParam(required = false) Long restaurantId,
                                             @RequestParam(required = false) Boolean isOnPromotion,
@@ -34,13 +34,13 @@ public class ProductController {
 
     @GetMapping("/restaurant/{restaurantId}")
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByRestaurant(@PathVariable Long restaurantId, Pageable pageable) {
+    public List<ProductDTO> getProductsByRestaurant(@PathVariable Long restaurantId, Pageable pageable) {
         return productService.getProductsByRestaurant(restaurantId, pageable).getContent();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ProductDTO findProductById(@PathVariable UUID id) {
+    public ProductDTO getProductById(@PathVariable UUID id) {
         return productService.getProductById(id);
     }
 

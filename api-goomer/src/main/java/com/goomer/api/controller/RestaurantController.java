@@ -21,30 +21,16 @@ public class RestaurantController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<RestaurantDTO> listAllRestaurants(Pageable pageable) {
-        return restaurantService.getAllRestaurants(pageable).getContent();
+    public List<RestaurantDTO> getAllRestaurants(@RequestParam(required = false) String name,
+                                                  @RequestParam(required = false) String description,
+                                                  Pageable pageable) {
+        return restaurantService.getAllRestaurants(name, description, pageable).getContent();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public RestaurantDTO findRestaurantById(@PathVariable Long id) {
+    public RestaurantDTO getRestaurantById(@PathVariable Long id) {
         return restaurantService.getRestaurantById(id);
-    }
-
-    @GetMapping("/searchByNameOrDescription")
-    @ResponseStatus(HttpStatus.OK)
-    public List<RestaurantDTO> findRestaurantsByNameOrDescription(@RequestParam(required = false) String name,
-                                                                  @RequestParam(required = false) String description,
-                                                                  Pageable pageable) {
-        return restaurantService.getRestaurantByNameOrDescription(name, description, pageable).getContent();
-    }
-
-    @GetMapping("/searchByImageOrHours")
-    @ResponseStatus(HttpStatus.OK)
-    public List<RestaurantDTO> findRestaurantsByImageOrOpeningHours(@RequestParam(required = false) String imageUrl,
-                                                                     @RequestParam(required = false) String openingHours,
-                                                                     Pageable pageable) {
-        return restaurantService.getRestaurantByImageUrlOrOpeningHours(imageUrl, openingHours, pageable).getContent();
     }
 
     @PostMapping
