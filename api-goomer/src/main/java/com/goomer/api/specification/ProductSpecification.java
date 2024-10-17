@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class ProductSpecification {
 
-    public static Specification<Product> withFilters(String name, String category, Long restaurantId, Boolean isOnPromotion) {
+    public static Specification<Product> withFilters(String name, String category, Boolean isOnPromotion) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
@@ -18,10 +18,6 @@ public class ProductSpecification {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("category")), "%" + category.toLowerCase() + "%"));
             }
 
-            if (restaurantId != null) {
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("restaurant").get("id"), restaurantId));
-            }
-
             if (isOnPromotion != null) {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("isOnPromotion"), isOnPromotion));
             }
@@ -29,5 +25,4 @@ public class ProductSpecification {
             return predicate;
         };
     }
-
 }

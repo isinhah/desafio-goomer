@@ -38,8 +38,8 @@ public class ProductService {
         return products.map(ProductDTO::productToDTO);
     }
 
-    public Page<ProductDTO> getAllProducts(String name, String category, Long restaurantId, Boolean isOnPromotion, Pageable pageable) {
-        Specification<Product> specification = ProductSpecification.withFilters(name, category, restaurantId, isOnPromotion);
+    public Page<ProductDTO> getAllProducts(String name, String category, Boolean isOnPromotion, Pageable pageable) {
+        Specification<Product> specification = ProductSpecification.withFilters(name, category, isOnPromotion);
         Page<Product> products = productRepository.findAll(specification, pageable);
         return products.map(ProductDTO::productToDTO);
     }

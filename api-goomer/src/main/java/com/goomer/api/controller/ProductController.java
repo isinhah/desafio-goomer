@@ -10,9 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -26,10 +24,9 @@ public class ProductController {
     @ResponseStatus(HttpStatus.OK)
     public List<ProductDTO> getAllProducts(@RequestParam(required = false) String name,
                                             @RequestParam(required = false) String category,
-                                            @RequestParam(required = false) Long restaurantId,
                                             @RequestParam(required = false) Boolean isOnPromotion,
                                             Pageable pageable) {
-        return productService.getAllProducts(name, category, restaurantId, isOnPromotion, pageable).getContent();
+        return productService.getAllProducts(name, category, isOnPromotion, pageable).getContent();
     }
 
     @GetMapping("/restaurant/{restaurantId}")
