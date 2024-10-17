@@ -18,8 +18,8 @@ public class RestaurantService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public Page<RestaurantDTO> getAllRestaurants(String name, String description, Pageable pageable) {
-        Specification<Restaurant> specification = RestaurantSpecification.withFilters(name, description);
+    public Page<RestaurantDTO> getAllRestaurants(String name, String description, String address, Pageable pageable) {
+        Specification<Restaurant> specification = RestaurantSpecification.withFilters(name, description, address);
         Page<Restaurant> restaurants = restaurantRepository.findAll(specification, pageable);
         return restaurants.map(RestaurantDTO::restaurantToDTO);
     }
@@ -42,6 +42,7 @@ public class RestaurantService {
 
         existingRestaurant.setName(requestDTO.name());
         existingRestaurant.setDescription(requestDTO.description());
+        existingRestaurant.setAddress(requestDTO.address());
         existingRestaurant.setImageUrl(requestDTO.imageUrl());
         existingRestaurant.setOpeningHours(requestDTO.openingHours());
 

@@ -7,6 +7,7 @@ public record RestaurantDTO(
         String name,
         String imageUrl,
         String description,
+        String address,
         String openingHours
 ) {
     public static RestaurantDTO restaurantToDTO(Restaurant restaurant) {
@@ -15,6 +16,7 @@ public record RestaurantDTO(
                 restaurant.getName(),
                 restaurant.getImageUrl(),
                 restaurant.getDescription(),
+                restaurant.getAddress(),
                 restaurant.getOpeningHours()
         );
     }

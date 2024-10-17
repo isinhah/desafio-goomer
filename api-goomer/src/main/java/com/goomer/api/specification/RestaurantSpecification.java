@@ -6,7 +6,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 public class RestaurantSpecification {
 
-    public static Specification<Restaurant> withFilters(String name, String description) {
+    public static Specification<Restaurant> withFilters(String name, String description, String address) {
         return (root, query, criteriaBuilder) -> {
             Predicate predicate = criteriaBuilder.conjunction();
 
@@ -16,6 +16,10 @@ public class RestaurantSpecification {
 
             if (description != null && !description.isEmpty()) {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("description")), "%" + description.toLowerCase() + "%"));
+            }
+
+            if (address != null && !address.isEmpty()) {
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("address")), "%" + address.toLowerCase() + "%"));
             }
 
             return predicate;

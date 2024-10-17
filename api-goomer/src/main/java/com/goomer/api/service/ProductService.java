@@ -27,11 +27,6 @@ public class ProductService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public Page<ProductDTO> getAllProducts(Pageable pageable) {
-        Page<Product> productPage = productRepository.findAll(pageable);
-        return productPage.map(ProductDTO::productToDTO);
-    }
-
     public ProductDTO getProductById(UUID id) {
         Product product = verifyProductIdExists(id);
         return ProductDTO.productToDTO(product);

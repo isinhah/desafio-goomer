@@ -26,6 +26,8 @@ public class Restaurant implements Serializable {
     private String imageUrl;
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private String address;
     @Column(name = "opening_hours", nullable = false)
     private String openingHours;
 
@@ -33,11 +35,12 @@ public class Restaurant implements Serializable {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Product> products = new HashSet<>();
 
-    public Restaurant(Long id, String name, String imageUrl, String description, String openingHours) {
+    public Restaurant(Long id, String name, String imageUrl, String description, String address, String openingHours) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
         this.description = description;
+        this.address = address;
         this.openingHours = openingHours;
     }
 }

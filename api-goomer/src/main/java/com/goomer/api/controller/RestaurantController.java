@@ -23,8 +23,9 @@ public class RestaurantController {
     @ResponseStatus(HttpStatus.OK)
     public List<RestaurantDTO> getAllRestaurants(@RequestParam(required = false) String name,
                                                   @RequestParam(required = false) String description,
+                                                 @RequestParam(required = false) String address,
                                                   Pageable pageable) {
-        return restaurantService.getAllRestaurants(name, description, pageable).getContent();
+        return restaurantService.getAllRestaurants(name, description, address, pageable).getContent();
     }
 
     @GetMapping("/{id}")

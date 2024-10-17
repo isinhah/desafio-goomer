@@ -2,10 +2,20 @@
 
 ## Challenge - Developer Backend
 
-### Instruções
+<details>
+    <summary><b>Produtos</b></summary>
+    <img src="./media/products_img.png" alt="Produtos">
+</details>
+<details>
+    <summary><b>Restaurantes</b></summary>
+    <img src="./media/restaurants_img.png" alt="Restaurantes">
+</details>
+
+### Sobre
 - **Nome do Projeto:** Goomer Lista Rango
 - **Objetivo do Projeto:** Criar uma API RESTful capaz de gerenciar os restaurantes e os produtos do seu cardápio.
 - **Tecnologias:** Java, Spring Boot e MySQL.
+- **Aprendizados**: Durante o desenvolvimento deste projeto, tive a oportunidade de explorar a implementação de Interface Specification, permitindo consultas dinâmicas e personalizadas ao banco de dados.
 
 ### Desafio
 - Listar todos os restaurantes

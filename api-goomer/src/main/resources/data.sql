@@ -4,6 +4,7 @@ CREATE TABLE tb_restaurants (
     name VARCHAR(255) NOT NULL,
     image_url VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
+    address VARCHAR(255) NOT NULL,
     opening_hours VARCHAR(255) NOT NULL
 );
 
@@ -26,5 +27,5 @@ CREATE TABLE tb_products (
 -- Inserir dados na tabela tb_restaurants
 INSERT INTO tb_restaurants (name, image_url, description, opening_hours)
 VALUES
-    ('Sushi Paradise', 'http://example.com/sushi_paradise.jpg', 'Fresh and delicious sushi.', '10:00 AM - 10:00 PM'),
-    ('Pizza Haven', 'http://example.com/pizza_haven.jpg', 'Tasty pizzas and more.', '11:00 AM - 11:00 PM');
+    ('Sushi Paradise', 'http://example.com/sushi_paradise.jpg', 'Fresh and delicious sushi.', 'Monday to Friday: 12:00 - 22:00, Saturday: 13:00 - 23:00'),
+    ('Pizza Haven', 'http://example.com/pizza_haven.jpg', 'Tasty pizzas and more.', 'Monday to Friday: 12:00 - 22:00, Saturday: 13:00 - 23:00');

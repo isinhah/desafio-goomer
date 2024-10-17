@@ -6,6 +6,7 @@ public record RestaurantRequestDTO(
         String name,
         String imageUrl,
         String description,
+        String address,
         String openingHours
 ) {
     public Restaurant toRestaurantEntity() {
@@ -14,6 +15,7 @@ public record RestaurantRequestDTO(
                 this.name(),
                 this.imageUrl(),
                 this.description(),
+                this.address(),
                 this.openingHours()
         );
     }
