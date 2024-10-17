@@ -24,64 +24,24 @@ public class ProductController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> listAllProducts(Pageable pageable) {
-        return productService.getAllProducts(pageable).getContent();
+    public List<ProductDTO> listAllProducts(@RequestParam(required = false) String name,
+                                            @RequestParam(required = false) String category,
+                                            @RequestParam(required = false) Long restaurantId,
+                                            @RequestParam(required = false) Boolean isOnPromotion,
+                                            Pageable pageable) {
+        return productService.getAllProducts(name, category, restaurantId, isOnPromotion, pageable).getContent();
+    }
+
+    @GetMapping("/restaurant/{restaurantId}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductDTO> findProductsByRestaurant(@PathVariable Long restaurantId, Pageable pageable) {
+        return productService.getProductsByRestaurant(restaurantId, pageable).getContent();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ProductDTO findProductById(@PathVariable UUID id) {
         return productService.getProductById(id);
-    }
-
-    @GetMapping("/searchByName")
-    @ResponseStatus(HttpStatus.OK)
-    public ProductDTO findProductByName(@RequestParam String name) {
-        return productService.getProductByName(name);
-    }
-
-    @GetMapping("/searchByCategory")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByCategory(@RequestParam String category, Pageable pageable) {
-        return productService.getProductsByCategory(category, pageable).getContent();
-    }
-
-    @GetMapping("/searchByRestaurant")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByRestaurant(@RequestParam Long restaurantId, Pageable pageable) {
-        return productService.getProductsByRestaurant(restaurantId, pageable).getContent();
-    }
-
-    @GetMapping("/searchByPromotion")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByPromotionAvailability(@RequestParam Boolean promotion, Pageable pageable) {
-        return productService.getProductsByPromotionAvailability(promotion, pageable).getContent();
-    }
-
-    @GetMapping("/searchByImageOrPrice")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByImageOrPrice(@RequestParam(required = false) String imageUrl,
-                                                       @RequestParam(required = false) BigDecimal price,
-                                                       Pageable pageable) {
-        return productService.getProductsByImageUrlAndPrice(imageUrl, price, pageable).getContent();
-    }
-
-    @GetMapping("/searchByPromotionalDescriptionOrPromotionalPrice")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByPromotionalDescriptionOrPromotionalPrice(
-            @RequestParam(required = false) String promotionalDescription,
-            @RequestParam(required = false) BigDecimal promotionalPrice,
-            Pageable pageable) {
-        return productService.getProductsByPromotionalDescriptionAndPromotionalPrice(promotionalDescription, promotionalPrice, pageable).getContent();
-    }
-
-    @GetMapping("/searchByPromotionalDaysOrPromotionHours")
-    @ResponseStatus(HttpStatus.OK)
-    public List<ProductDTO> findProductsByPromotionalDaysOrPromotionHours(
-            @RequestParam(required = false) String promotionalDays,
-            @RequestParam(required = false) String promotionHours,
-            Pageable pageable) {
-        return productService.getProductsByPromotionalDaysAndPromotionHours(promotionalDays, promotionHours, pageable).getContent();
     }
 
     @PostMapping

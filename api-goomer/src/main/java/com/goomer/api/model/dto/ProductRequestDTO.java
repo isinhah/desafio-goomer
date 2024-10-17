@@ -25,7 +25,7 @@ public record ProductRequestDTO(
                 this.price(),
                 this.category(),
                 this.promotionalDescription(),
-                this.price(),
+                this.promotionalPrice(),
                 this.promotionalDays(),
                 this.promotionHours(),
                 this.isOnPromotion() != null ? this.isOnPromotion() : false,
